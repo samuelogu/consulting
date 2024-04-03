@@ -1,2 +1,2 @@
-let email = "psalm294u@gmail.com"
+let email = "hello@samuelogu.com"
 console.log(email);
