@@ -10,11 +10,7 @@ for (let index = 0; index < num.length; index++) {
     const element = num[index];
     element.addEventListener('click', () => {
         let value = element.value;
-        if (newResult) {
-            newResult = false
-            return input(value, true);
-        }
-        input(value)
+        checkResult(value)
     })
 }
 
@@ -22,11 +18,7 @@ for (let index = 0; index < operator.length; index++) {
     const element = operator[index];
     element.addEventListener('click', () => {
         let value = element.value;
-        if (newResult) {
-            newResult = false
-            return input(value, true);
-        }
-        input(value)
+        checkResult(value)
     })
 }
 
@@ -38,10 +30,13 @@ function calculate() {
     const result = eval(inputBox)
     input(result, true)
     newResult = true;
+    del.innerHTML = "CE";
 }
 
 function backspace() {
 
+    del.innerHTML = "Del";
+    
     if (newResult) {
         newResult = false
         return input('', true);
@@ -61,4 +56,16 @@ function input(value, clear = false) {
     }
 
     clear ? resultBox.innerHTML = value : resultBox.innerHTML += value
+}
+
+function checkResult(value) {
+
+    del.innerHTML = "Del";
+
+    if (newResult) {
+        newResult = false
+        return input(value, true);
+    }
+    input(value)
+
 }
