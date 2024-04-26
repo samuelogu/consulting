@@ -2,12 +2,13 @@ import { Component, NgModule, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PostService } from '../../services/post/post.service';
 import { Posts } from '../../interfaces/posts.interface';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
