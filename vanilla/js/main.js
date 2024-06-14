@@ -69,3 +69,4 @@ function checkResult(value) {
     input(value)
 
 }
+
