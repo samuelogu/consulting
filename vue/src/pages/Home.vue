@@ -2,6 +2,9 @@
 import Jumbotron from "../components/Jumbotron.vue";
 import Button from "../components/Button.vue";
 import axios from "axios"
+import moment from 'moment';
+
+const apiUrl = "http://localhost:3000";
 
 export default {
   name: 'Home',
@@ -21,7 +24,7 @@ export default {
     }
   },
   async mounted() {
-    this.posts = (await axios('https://jsonplaceholder.typicode.com/posts')).data.slice(0, 10);
+    this.posts = (await axios(`${apiUrl}/posts`)).data.slice(0, 10);
     this.photos = (await axios('https://jsonplaceholder.typicode.com/photos')).data.slice(0, 10);
     this.posts.map((_post, key) => {
       this.posts[key].thumbnail = this.photos[key].thumbnailUrl;
@@ -41,7 +44,7 @@ export default {
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
           <h3 class="mb-0">{{ post.title }}</h3>
-          <div class="mb-1 text-body-secondary">Nov 12</div>
+          <div class="mb-1 text-body-secondary">{{ $filters.dateFormatter(post.createdAt) }}</div>
           <p class="card-text mb-auto">{{ post.body }}</p>
           <router-link :to="`/posts/${post.id}`" class="icon-link gap-1 icon-link-hover stretched-link">
             Continue reading
