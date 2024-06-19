@@ -2,8 +2,6 @@
 import Jumbotron from "../components/Jumbotron.vue";
 import axios from "axios"
 
-const apiUrl = "http://localhost:3000/posts";
-
 export default {
   name: 'Post',
   data() {
@@ -14,11 +12,11 @@ export default {
   },
   components: {Jumbotron},
   async mounted() {
-    this.post = (await axios(`${apiUrl}/${this.id}`)).data;
+    this.post = (await axios(`https://jsonplaceholder.typicode.com/posts/${this.id}`)).data;
   }
 }
 </script>
 
 <template>
-  <Jumbotron v-if="post" :title="`${post.title}`" :text="`${post.body}`" :post="post" />
+  <Jumbotron v-if="post" :title="`${post.title}`" :text="`${post.body}`" />
 </template>

@@ -3,7 +3,7 @@ export default {
   name: 'Button',
   props: {
     text: "",
-    type: "btn-primary"
+    type: "btn-primary",
   }
 }
 </script>
